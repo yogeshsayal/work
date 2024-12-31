@@ -1,4 +1,11 @@
 <html>
+<style>
+.weekend{
+text-align:center;
+color:red;
+font-weight:bold;
+}
+</style>
 <script>
 function start()
 {
@@ -24,15 +31,18 @@ for (let i=0;i< 5;i++)
 			   text+="<td>&nbsp;</td>";
 			   else
 			   {
+			   if(days==30)
 			   text+="<td style='text-align:center;'>"+days+"</td>";
+			   else
+			   text+="<td class='weekend'>"+days+"</td>";
 			   --temp;
 			   }			  
 			}
 	else{
-	if(j==5 || j==6)
-	text+="<td style='color:red;text-align:center;'>"+(++k)+"</td>";	
+	if((j==5) || (j==6) || (((month[x][0]=="February")&&(k==25))||((month[x][0]=="March")&&(k==13))||((month[x][0]=="April")&&((k==9)||(k==17)))||((month[x][0]=="May")&&(k==11))||((month[x][0]=="August")&&(k==14))||((month[x][0]=="September")&&(k==4))||((month[x][0]=="October")&&((k==1)||(k==19)))||((month[x][0]=="November")&&(k==4))||((month[x][0]=="December")&&(k==24))))
+	text+="<td class='weekend'>"+(++k)+"</td>";	
 	else
-	text+="<td style='text-align:center;'>"+(++k)+"</td>";	
+	text+="<td style='text-align:center;'>"+(++k)+"</td>";		
 	if(k==days)
 	break;
 	}
@@ -42,7 +52,7 @@ for (let i=0;i< 5;i++)
 	text+="</tr>";
 }
 text+="</table></center></td>"
-if(x==2 || x==5 || x==8)
+if(x==2 || x==5 ||x==8)
 text+="</tr><tr>";
 else if(x==11)
 text+="</tr></center>";
