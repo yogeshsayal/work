@@ -1,0 +1,56 @@
+<html>
+<script>
+function start()
+{
+const month=[["January","312"],["February","285"],["March","315"],["April","301" ],["May","313"],["June","306"],["July","311"],["August","314"],["September","300"],["October","312"],["November","305"],["December","310"]];
+var text="<center><h3 style='color:blue;'>Calender 2025</h3><table cellspacing=10><tr>";
+for (let x = 0; x < month.length; x++) 
+{
+var title=month[x][0];
+text+="<td><center><b>"+title + "</b><br><table border=2 cellpadding=5 cellspacing=5><tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th style='color:red;'>Sat</th><th style='color:red;'>Sun</th></tr>";
+var pre=month[x][1];
+var begin=pre%10;
+var days=Math.trunc(pre/10);
+var temp=begin+days;
+let k=0;
+for (let i=0;i< 5;i++) 
+{
+	text+="<tr>"
+	for(let j = 0;j<7;j++)
+	{
+			if(i==0 && j<begin)
+			{
+			   if(temp<=35)
+			   text+="<td>&nbsp;</td>";
+			   else
+			   {
+			   text+="<td style='text-align:center;'>"+days+"</td>";
+			   --temp;
+			   }			  
+			}
+	else{
+	if(j==5 || j==6)
+	text+="<td style='color:red;text-align:center;'>"+(++k)+"</td>";	
+	else
+	text+="<td style='text-align:center;'>"+(++k)+"</td>";	
+	if(k==days)
+	break;
+	}
+	}
+	if(k==days)
+	break;
+	text+="</tr>";
+}
+text+="</table></center></td>"
+if(x==3 || x==7)
+text+="</tr><tr>";
+else if(x==11)
+text+="</tr></center>";
+}
+var node = document.createElement('p');
+node.innerHTML = text;
+document.body.appendChild(node);
+}
+</script>
+<body onload="start()"></body>
+</html>
